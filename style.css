@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-style: italic;
+    background-color:white;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.input-section label {
+    font-weight: bold;
+    
+}
+
+.input-section input[type="number"], .input-section input[type="date"] {
+    padding: 6px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.input-section button {
+    padding: 8px 15px;
+    background-color: blue;
+    color: white;
+    border:blue;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-section button:hover {
+    background-color: green;
+}
+
+.expenses-list {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid lightslategray;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.delete-btn {
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover{
+    background-color: crimson;
+}
+
+/* Responsive Design */
+
+@media (max-width: 500px) {
+    .input-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .input-section label, .input-section input, .input-section button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tr {
+        margin-bottom: 10px;
+    }
+    
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        text-align: right;
+    }
+    
+    td:before {
+        content: attr(data-label);
+        flex-grow: 1;
+        font-weight: bold;
+        text-align: left;
+    }
+}
