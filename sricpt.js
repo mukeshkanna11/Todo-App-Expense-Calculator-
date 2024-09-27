@@ -1,4 +1,5 @@
-//Js Files....
+//Js Files//
+
 
 let expenses = [];
 let totalAmount = 0;
@@ -10,7 +11,7 @@ const addBtn = document.getElementById('add-btn');
 const expensesTableBody = document.getElementById('expense-table-body');
 const totalAmountCell = document.getElementById('total-amount');
 
-addBtn.addEventListener('click', function() {
+addBtn.addEventListener('click', function () {
     const category = categorySelect.value;
     const amount = Number(amountInput.value);
     const date = dateInput.value;
@@ -39,27 +40,59 @@ addBtn.addEventListener('click', function() {
     const categoryCell = newRow.insertCell();
     const amountCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
-    const deleteCell = newRow.insertCell();
+    const actionCell = newRow.insertCell();
+
     const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button'); // New 'Edit' button
 
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-btn');
-    
-    // Correct delete function: closure to maintain a reference to the specific row
 
-    deleteBtn.addEventListener('click', function() {
+    editBtn.textContent = 'Edit';
+    editBtn.classList.add('edit-btn'); // New 'Edit' button style
+
+    // Delete function: closure to maintain a reference to the specific row
+    deleteBtn.addEventListener('click', function () {
         const rowIndex = Array.from(expensesTableBody.rows).indexOf(newRow);
 
         if (rowIndex !== -1) {
-            const deletedExpense = expenses.splice(rowIndex, 1)[0];  //  deleted expense
+            const deletedExpense = expenses.splice(rowIndex, 1)[0];  // deleted expense
             totalAmount -= deletedExpense.amount;  // Subtract the amount from total
             totalAmountCell.textContent = totalAmount;
             expensesTableBody.deleteRow(rowIndex);  // Remove the row from the table
         }
     });
 
+    // Edit function: allows editing of the existing expense
+    editBtn.addEventListener('click', function () {
+        const rowIndex = Array.from(expensesTableBody.rows).indexOf(newRow);
+
+        if (rowIndex !== -1) {
+            const expenseToEdit = expenses[rowIndex];
+            // Fill input fields with existing data
+            categorySelect.value = expenseToEdit.category;
+            amountInput.value = expenseToEdit.amount;
+            dateInput.value = expenseToEdit.date;
+
+            // Remove the expense from the list and table
+            totalAmount -= expenseToEdit.amount;  // Adjust total
+            totalAmountCell.textContent = totalAmount;
+            expenses.splice(rowIndex, 1);
+            expensesTableBody.deleteRow(rowIndex);
+
+            // Focus on the amount input for easy editing
+            amountInput.focus();
+        }
+    });
+
     categoryCell.textContent = expense.category;
     amountCell.textContent = expense.amount;
     dateCell.textContent = expense.date;
-    deleteCell.appendChild(deleteBtn);
+    actionCell.appendChild(deleteBtn);
+    actionCell.appendChild(editBtn); // Add 'Edit' button next to 'Delete'
+
+    // Clear input fields after adding or editing expense
+    categorySelect.value = '';
+    amountInput.value = '';
+    dateInput.value = '';
 });

@@ -80,6 +80,21 @@ tfoot td {
     background-color: crimson;
 }
 
+.edit-btn {
+    padding: 8px 15px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color:blue;
+}
+
+
 /* Responsive Design */
 
 @media (max-width: 500px) {
