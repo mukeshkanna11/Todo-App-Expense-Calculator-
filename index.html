@@ -14,48 +14,50 @@
 
 <body>
 
-    <h1>Expense-Calculator!</h1>
-    <div class="input-section">
-        <label for="catergory-select">Category:</label>
-        <select id="category-select">
-            <option value="Food & Bevarage">Food & Bevarage</option>
-            <option value="Rent">Rent</option>
-            <option value="Transport">Transport</option>
-            <option value="Self-Expense">Self-Expense</option>
-        </select>
-        <label for="amount-input">Amount:</label>
-        <input type="number" id="amount-input">
-        <lable for="date-input">Date:</lable>
-        <input type="date" id="date-input">
-        <button id="add-btn">Add Expense</button>
-    </div>
+    <div class="container">
+        <h1>Income & Expense Tracker</h1>
+        <div class="balance-section">
+            <h2>Net Balance: $<span id="net-balance">0</span></h2>
+        </div>
+        <div class="total-section">
+            <p>Total Income: $<span id="total-income">0</span></p>
+            <p>Total Expense: $<span id="total-expense">0</span></p>
+        </div>
 
-    <div>
-        <div class="expenses-list"></div>
-        <h2>Expenses List..</h2>
+        <!-- Input section for adding entries -->
+        <div class="input-section">
+            <label for="type-select">Type:</label>
+            <select id="type-select">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+
+            <input type="text" id="description-input" placeholder="Enter description" />
+            <input type="number" id="amount-input" placeholder="Enter amount" />
+            <button id="add-btn">Add Data</button>
+        </div>
+
+        <!-- Filter options for displaying entries -->
+        <div class="filter-section">
+            <label><input type="radio" name="filter" value="all" checked> All</label>
+            <label><input type="radio" name="filter" value="income"> Income</label>
+            <label><input type="radio" name="filter" value="expense"> Expense</label>
+        </div>
+
+        <!-- Table for displaying entries -->
         <table>
             <thead>
                 <tr>
-                    <th>Category</th>
+                    <th>Description</th>
                     <th>Amount</th>
+                    <th>Type</th>
                     <th>Date</th>
-                    <th>Delete</th>
-
+                    <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="expense-table-body">
-
+            <tbody id="entries-table-body">
+                <!-- Dynamic rows will go here -->
             </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        Total:
-                    </td>
-                    <td id="total-amount"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tfoot>
         </table>
     </div>
     <script src="sricpt.js"></script>
