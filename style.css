@@ -96,32 +96,58 @@ td button.delete:hover{
     opacity: 0.6;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .input-section {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    table, thead, tbody, th, td, tr {
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    table, th, td {
         display: block;
+        width: 100%;
+        text-align: right;
     }
 
     th, td {
-        width: 100%;
+        padding: 10px;
         text-align: right;
-        padding-left: 50%;
-        position: relative;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr {
+        margin-bottom: 15px;
     }
 
     td:before {
-        position: absolute;
-        left: 10px;
         content: attr(data-label);
         font-weight: bold;
+        text-transform: capitalize;
+        float: left;
     }
 
-    thead {
-        display: none;
+    /* Adjust form layout for mobile */
+    form {
+        flex-direction: column;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+
+    /* Smaller totals font */
+    .totals span {
+        font-size: 14px;
+    }
+}
+
+/* Small devices */
+@media screen and (max-width: 480px) {
+    input, select, button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    .totals span {
+        font-size: 12px;
     }
 }
